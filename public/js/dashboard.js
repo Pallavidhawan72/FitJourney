@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});// built this dashboard to be the heart of the FitJourney experience
+});// 
 
 // It keep track of user data and current content to make everything personalized
 let userProfile = {};
@@ -113,10 +113,10 @@ async function loadDashboardData() {
     try {
         console.log('Starting loadDashboardData...'); // I add debug logs to track progress
         
-        // I start with motivation because it sets the tone for the day
+        // starts with motivation because it sets the tone for the day
         await loadMotivationalQuote();
         
-        // I load everything else in parallel for better performance
+        // Loads everything else in parallel for better performance
         console.log('Loading parallel data...'); // More debugging to help me understand what's happening
         await Promise.all([
             loadWorkouts(),
@@ -149,7 +149,7 @@ async function loadMotivationalQuote() {
 
 async function loadWorkouts() {
     try {
-        // I get personalized workout recommendations based on user preferences
+        // It will get personalized workout recommendations based on user preferences
         const response = await fetch('/api/workout-recommendations', {
             method: 'POST',
             headers: {
@@ -224,7 +224,7 @@ function displayWorkouts(workouts) {
         return;
     }
     
-    // I create interactive workout cards that users can click on
+    // It will create interactive workout cards that users can click on
     workoutsList.innerHTML = workouts.map(workout => `
         <div class="workout-item clickable" data-exercise-id="${workout.id}">
             <div class="item-thumbnail">
@@ -768,7 +768,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Add accessibility improvements
+// Add accessibility
 document.addEventListener('DOMContentLoaded', function() {
     const interactiveElements = document.querySelectorAll('button, .workout-item, .meal-item, .yoga-item');
     interactiveElements.forEach(element => {
