@@ -1,9 +1,9 @@
 const axios = require('axios');
 
-// I built this service to help people find amazing workout exercises
+// built this service to help people find amazing workout exercises
 class WgerService {
     constructor() {
-        // I connect to the WGER fitness database - it's one of my favorite APIs
+        // I connected to the WGER fitness database - it's one of my favorite APIs
         this.baseURL = 'https://wger.de/api/v2';
         this.apiKey = process.env.WGER_API_KEY;
     }
@@ -58,7 +58,7 @@ class WgerService {
 
             const exercises = [];
             
-            // I fetch exercises from each category to create variety
+            // fetching exercises from each category to create variety
             for (const categoryId of categoryIds) {
                 const response = await axios.get(`${this.baseURL}/exerciseinfo/`, {
                     params: {
@@ -76,16 +76,16 @@ class WgerService {
                 exercises.push(...response.data.results);
             }
 
-            // I remove duplicates and prioritize exercises with images
+            // Removing duplicates and prioritize exercises with images
             const uniqueExercises = exercises.filter((exercise, index, self) => 
                 index === self.findIndex(e => e.id === exercise.id)
             );
             
-            // I separate exercises based on whether they have visual guides
+            // It will separate exercises based on whether they have visual guides
             const exercisesWithImages = uniqueExercises.filter(ex => ex.images && ex.images.length > 0);
             const exercisesWithoutImages = uniqueExercises.filter(ex => !ex.images || ex.images.length === 0);
             
-            // I shuffle both arrays to keep workouts interesting and varied
+            // shuffle both arrays to keep workouts interesting and varied
             const shuffleArray = (array) => {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -97,7 +97,7 @@ class WgerService {
             shuffleArray(exercisesWithImages);
             shuffleArray(exercisesWithoutImages);
             
-            // I prioritize exercises with images first, then add others if needed
+            // prioritize exercises with images first, then add others if needed
             const finalExercises = [...exercisesWithImages, ...exercisesWithoutImages].slice(0, 10);
 
             return finalExercises.map(exercise => {
