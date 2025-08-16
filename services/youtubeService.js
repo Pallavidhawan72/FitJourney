@@ -34,7 +34,6 @@ class YoutubeService {
             return this.videoCache.get(cacheKey).videos;
         }
 
-        // I first check if we have a valid API key
         if (!this.apiKey) {
             console.warn('YouTube API key not configured, returning empty array');
             return [];
@@ -54,7 +53,7 @@ class YoutubeService {
                 query = 'stretching exercises flexibility';
             }
 
-            // I adjust results based on how much time you have available
+            // Adjusting results based on how much time you have available
             if (duration === 'short') {
                 videoDuration = 'short';
                 maxResults = 8;
@@ -82,7 +81,7 @@ class YoutubeService {
             if (response.data.items && response.data.items.length > 0) {
                 console.log(`Successfully fetched ${response.data.items.length} videos from YouTube API`);
                 
-                // I format the video data to make it easy to display and use
+                // It will format the video data to make it easy to display and use
                 const videos = response.data.items.map(item => ({
                     id: item.id.videoId,
                     title: item.snippet.title,
@@ -94,7 +93,7 @@ class YoutubeService {
                     type: type
                 }));
 
-                // I cache the videos to avoid hitting quota limits repeatedly
+                // cache the videos to avoid hitting quota limits repeatedly
                 this.videoCache.set(cacheKey, {
                     videos: videos,
                     timestamp: Date.now()
@@ -108,12 +107,12 @@ class YoutubeService {
         } catch (error) {
             console.error('YouTube API error:', error.response?.data || error.message);
             
-            // I check if it's a quota error specifically
+            // It checks if it's a quota error specifically
             if (error.response?.data?.error?.message?.includes('quota')) {
                 console.log('YouTube quota exceeded - will reset tomorrow! Returning empty array.');
             }
             
-            // I return an empty array when API fails
+            // return an empty array when API fails
             console.log('No fallback videos configured - returning empty array');
             return [];
         }
@@ -143,7 +142,7 @@ class YoutubeService {
         }
     }
 
-    // I added this method to test if the YouTube API is working properly
+    // added this method to test if the YouTube API is working properly
     async testApiConnection() {
         if (!this.apiKey) {
             return { success: false, error: 'No API key configured' };
