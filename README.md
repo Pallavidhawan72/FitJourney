@@ -24,3 +24,5 @@ FitJourney is a comprehensive fitness and wellness application that helps users 
 - Node.js (v14 or higher)
 - npm or yarn
 
+## Credits / Notes
+The `styles.css` file was partially assisted using AI tools to speed up the styling process.
