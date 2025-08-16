@@ -1,5 +1,6 @@
 # FitJourney - Your Personal Health & Wellness Companion
 
+# Website Deployed Link - https://fitjourney-1.onrender.com/
 FitJourney is a comprehensive fitness and wellness application that helps users achieve their health goals through personalized fitness routines, yoga recommendations, and culturally relevant diet plans.
 
 ## Features
