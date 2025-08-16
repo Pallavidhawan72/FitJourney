@@ -1,0 +1,94 @@
+//- Navigation mixin
+mixin navigation(currentPage)
+  header.header
+    nav.navbar
+      .nav-container
+        .nav-logo
+          a(href="/")
+            i.fas.fa-heartbeat
+            span FitJourney
+        .nav-menu
+          if currentPage === 'dashboard'
+            span#userName.user-name Welcome!
+            a.nav-link(href="/") Home
+            a.nav-link.active(href="/dashboard") Dashboard
+            a.nav-link(href="/profile") Profile
+          else
+            a.nav-link(href="#features") Features
+            a.nav-link(href="#about") About
+            a.nav-link.btn-primary(href="/onboarding") Get Started
+
+//- Feature card mixin
+mixin featureCard(iconClass, title, description)
+  .feature-card
+    .feature-icon
+      i(class=iconClass)
+    h3= title
+    p= description
+
+//- Hero card mixin
+mixin heroCard(iconClass, title, description)
+  .hero-card
+    .card-icon
+      i(class=iconClass)
+    h3= title
+    p= description
+
+//- Metric card mixin
+mixin metricCard(iconClass, label, valueId, value = '-')
+  .metric-card
+    .metric-icon
+      i(class=iconClass)
+    .metric-info
+      span.metric-label= label
+      span.metric-value(id=valueId)= value
+
+//- Form input mixin
+mixin formInput(type, id, label, name, required = false, min, max, options)
+  .form-group
+    label(for=id)= label
+    if type === 'select'
+      select(id=id name=name required=required)
+        option(value="") Select #{label}
+        each option in options
+          option(value=option.value)= option.text
+    else
+      input(type=type id=id name=name required=required min=min max=max)
+
+//- Button mixin
+mixin button(type, classes, text, iconClass, onclick)
+  button(type=type class=classes onclick=onclick)
+    if iconClass
+      i(class=iconClass)
+    | #{text}
+
+//- Footer mixin
+mixin appFooter()
+  footer.footer
+    .container
+      .footer-content
+        .footer-section
+          h3 FitJourney
+          p Your personal health and wellness companion
+        .footer-section
+          h4 Features
+          ul
+            li
+              a(href="#features") Smart Onboarding
+            li
+              a(href="#features") Custom Workouts
+            li
+              a(href="#features") Meal Plans
+            li
+              a(href="#features") Yoga & Meditation
+        .footer-section
+          h4 APIs Used
+          ul
+            li
+              a(href="https://wger.de/en/software/api", target="_blank") WGER API
+            li
+              a(href="https://spoonacular.com/food-api", target="_blank") Spoonacular API
+            li
+              a(href="https://developers.google.com/youtube/v3", target="_blank") YouTube Data API
+      .footer-bottom
+        p &copy; 2025 FitJourney. All rights reserved. | Made with ❤️ for your fitness goals

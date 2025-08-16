@@ -1,0 +1,42 @@
+extends layouts/layout
+
+block content
+  .profile-container
+    h1 Profile
+    if user
+      ul.profile-details
+        li
+          strong Name: 
+          | #{user.name}
+        li
+          strong Age: 
+          | #{user.age}
+        li
+          strong Gender: 
+          | #{user.gender}
+        li
+          strong Height: 
+          | #{user.height} cm
+        li
+          strong Weight: 
+          | #{user.weight} kg
+        li
+          strong Activity Level: 
+          | #{user.activityLevel}
+        li
+          strong Goals: 
+          | #{user.goals}
+        li
+          strong BMI: 
+          | #{user.bmi}
+        li
+          strong BMR: 
+          | #{user.bmr}
+        li
+          strong Daily Calories: 
+          | #{user.dailyCalories}
+    else
+      p No profile data found. Please complete onboarding.
+
+block scripts
+  script(src="/js/profile.js")

@@ -1,0 +1,38 @@
+//- Loading state component
+mixin loadingState(text = 'Loading...')
+  .loading-text
+    i.fas.fa-spinner.fa-spin
+    | #{text}
+
+//- Section header component
+mixin sectionHeader(title, subtitle, buttonText, buttonAction, iconClass)
+  .section-header
+    .section-info
+      h2
+        if iconClass
+          i(class=iconClass)
+        | #{title}
+      if subtitle
+        p.section-subtitle= subtitle
+    if buttonText
+      button.refresh-btn(onclick=buttonAction title=buttonText)
+        span(style="font-size:1.2em; font-weight:600; letter-spacing:0.5px; display:flex; align-items:center; gap:0.3em;")
+          i.fas.fa-ellipsis-v
+          | #{buttonText}
+
+//- Modal component
+mixin modal(id, title)
+  div(id=id).modal
+    .modal-content
+      span.close ×
+      if title
+        h2= title
+      block
+
+//- Stats component
+mixin statsGrid(stats)
+  .about-stats
+    each stat in stats
+      .stat
+        span.stat-number= stat.number
+        span.stat-label= stat.label

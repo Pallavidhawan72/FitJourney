@@ -1,0 +1,81 @@
+extends layouts/layout
+include mixins
+
+block content
+  +navigation('home')
+
+  main
+    // Hero Section
+    section.hero
+      .hero-container
+        .hero-content
+          h1.hero-title
+            | Transform Your Health Journey with 
+            span.highlight Personalized Fitness
+          p.hero-description
+            | Get customized workouts, meal plans, and wellness recommendations tailored to your goals. 
+            | Whether you prefer Indian cuisine or global flavors, we've got you covered.
+          .hero-buttons
+            a.btn.btn-primary.btn-large(href="/onboarding")
+              i.fas.fa-play
+              | Start Your Journey
+            a.btn.btn-secondary.btn-large(href="#features")
+              i.fas.fa-info-circle
+              | Learn More
+        .hero-image
+          +heroCard('fas fa-dumbbell', 'Smart Workouts', 'Bodyweight exercises tailored to your fitness level')
+          +heroCard('fas fa-utensils', 'Cultural Meals', 'Indian and global recipes for your preferences')
+          +heroCard('fas fa-pray', 'Yoga & Wellness', 'Meditation and yoga for mental health')
+
+    // Features Section
+    section#features.features
+      .container
+        h2.section-title Why Choose FitJourney?
+        .features-grid
+          +featureCard('fas fa-brain', 'Smart Onboarding', 'Complete a personalized quiz to get recommendations based on your BMI, BMR, and preferences.')
+          +featureCard('fas fa-dumbbell', 'Custom Workouts', 'Get bodyweight exercises from the WGER API, perfect for home workouts without equipment.')
+          +featureCard('fas fa-utensils', 'Cultural Meals', 'Enjoy Indian cuisine or global recipes with nutrition data from Spoonacular API.')
+          +featureCard('fas fa-pray', 'Yoga & Meditation', 'Access curated yoga and meditation videos from YouTube for mental wellness.')
+          +featureCard('fas fa-chart-line', 'Daily Dashboard', 'View your complete daily plan with workouts, meals, and motivational quotes.')
+          +featureCard('fas fa-mobile-alt', 'Responsive Design', 'Access your health journey from any device with our modern, responsive interface.')
+
+    // About Section
+    section#about.about
+      .container
+        .about-content
+          .about-text
+            h2 Your Journey to Better Health Starts Here
+            p
+              | FitJourney combines the power of multiple APIs to create a comprehensive health and wellness platform. 
+              | We use the WGER API for bodyweight exercises, Spoonacular API for meal planning, and YouTube Data API 
+              | for yoga and meditation content.
+            p
+              | Our smart onboarding process calculates your BMI and BMR to provide personalized recommendations. 
+              | Whether you're a beginner or advanced fitness enthusiast, we have something for everyone.
+            .about-stats
+              .stat
+                span.stat-number 3
+                span.stat-label APIs Integrated
+              .stat
+                span.stat-number 100+
+                span.stat-label Exercises
+              .stat
+                span.stat-number 1000+
+                span.stat-label Recipes
+          .about-image
+            .image-placeholder
+              i.fas.fa-heartbeat
+
+    // CTA Section
+    section.cta
+      .container
+        h2 Ready to Start Your Fitness Journey?
+        p Join thousands of users who have transformed their health with FitJourney
+        a.btn.btn-primary.btn-large(href="/onboarding")
+          i.fas.fa-rocket
+          | Get Started Now
+
+  +appFooter()
+
+block scripts
+  script(src="js/main.js")

@@ -1,0 +1,159 @@
+extends layouts/layout
+
+block content
+  header.header
+    nav.navbar
+      .nav-container
+        .nav-logo
+          a(href="/")
+            i.fas.fa-heartbeat
+            span FitJourney
+
+  main.onboarding-main
+    .container
+      .onboarding-container
+        .onboarding-header
+          h1 Let's Personalize Your Journey
+          p Answer a few questions to get your customized fitness and nutrition plan
+
+        form#onboardingForm.onboarding-form
+          // Progress Bar
+          .progress-bar
+            #progressFill.progress-fill
+
+          // Step 1: Basic Information
+          #step1.form-step.active
+            h2 Basic Information
+            .form-group
+              label(for="name") Full Name
+              input#name(type="text" name="name" required)
+            .form-row
+              .form-group
+                label(for="age") Age
+                input#age(type="number" name="age" min="16" max="100" required)
+              .form-group
+                label(for="gender") Gender
+                select#gender(name="gender" required)
+                  option(value="") Select Gender
+                  option(value="male") Male
+                  option(value="female") Female
+                  option(value="other") Other
+            .form-row
+              .form-group
+                label(for="height") Height (cm)
+                input#height(type="number" name="height" min="120" max="250" required)
+              .form-group
+                label(for="weight") Weight (kg)
+                input#weight(type="number" name="weight" min="30" max="300" required)
+
+          // Step 2: Fitness Goals
+          #step2.form-step
+            h2 What are your fitness goals?
+            .checkbox-group
+              .checkbox-item
+                input#goal1(type="checkbox" name="goals" value="weight_loss")
+                label(for="goal1") Weight Loss
+              .checkbox-item
+                input#goal2(type="checkbox" name="goals" value="muscle_gain")
+                label(for="goal2") Muscle Gain
+              .checkbox-item
+                input#goal3(type="checkbox" name="goals" value="endurance")
+                label(for="goal3") Improve Endurance
+              .checkbox-item
+                input#goal4(type="checkbox" name="goals" value="flexibility")
+                label(for="goal4") Increase Flexibility
+              .checkbox-item
+                input#goal5(type="checkbox" name="goals" value="maintenance")
+                label(for="goal5") Maintain Current Fitness
+              .checkbox-item
+                input#goal6(type="checkbox" name="goals" value="general_health")
+                label(for="goal6") General Health & Wellness
+
+          // Step 3: Activity Level
+          #step3.form-step
+            h2 What's your current activity level?
+            .form-group
+              label(for="activityLevel") Activity Level
+              select#activityLevel(name="activityLevel" required)
+                option(value="") Select Activity Level
+                option(value="sedentary") Sedentary (Little or no exercise)
+                option(value="lightly_active") Lightly Active (Light exercise 1-3 days/week)
+                option(value="moderately_active") Moderately Active (Moderate exercise 3-5 days/week)
+                option(value="very_active") Very Active (Hard exercise 6-7 days/week)
+                option(value="extremely_active") Extremely Active (Very hard exercise, physical job)
+            .form-group
+              label(for="fitnessLevel") Fitness Experience
+              select#fitnessLevel(name="fitnessLevel" required)
+                option(value="") Select Experience Level
+                option(value="beginner") Beginner (0-6 months)
+                option(value="intermediate") Intermediate (6 months - 2 years)
+                option(value="advanced") Advanced (2+ years)
+
+          // Step 4: Diet Preferences
+          #step4.form-step
+            h2 Tell us about your diet preferences
+            .form-group
+              label(for="cuisine") Preferred Cuisine
+              select#cuisine(name="cuisine" required)
+                option(value="") Select Cuisine
+                option(value="indian") Indian
+                option(value="mediterranean") Mediterranean
+                option(value="asian") Asian
+                option(value="american") American
+                option(value="italian") Italian
+                option(value="mexican") Mexican
+                option(value="global") Global Mix
+            .form-group
+              label(for="diet") Diet Type
+              select#diet(name="diet" required)
+                option(value="") Select Diet Type
+                option(value="balanced") Balanced
+                option(value="vegetarian") Vegetarian
+                option(value="vegan") Vegan
+                option(value="keto") Ketogenic
+                option(value="paleo") Paleo
+                option(value="gluten-free") Gluten-Free
+            .form-group
+              label(for="intolerances") Food Intolerances (Optional)
+              .checkbox-group
+                .checkbox-item
+                  input#dairy(type="checkbox" name="intolerances" value="dairy")
+                  label(for="dairy") Dairy
+                .checkbox-item
+                  input#gluten(type="checkbox" name="intolerances" value="gluten")
+                  label(for="gluten") Gluten
+                .checkbox-item
+                  input#nuts(type="checkbox" name="intolerances" value="tree nut")
+                  label(for="nuts") Tree Nuts
+                .checkbox-item
+                  input#shellfish(type="checkbox" name="intolerances" value="shellfish")
+                  label(for="shellfish") Shellfish
+
+          // Step 5: Results & Confirmation
+          #step5.form-step
+            h2 Your Personalized Health Metrics
+            .metrics-display
+              .metric-card
+                h3 BMI
+                .metric-value(id="bmiResult") -
+                .metric-category(id="bmiCategory") Calculating...
+              .metric-card
+                h3 BMR
+                .metric-value(id="bmrResult") -
+                .metric-category Daily Base Calories
+              .metric-card
+                h3 Target Calories
+                .metric-value(id="targetCalories") -
+                .metric-category For Your Goals
+
+            p(style="text-align: center; margin-top: 2rem; color: #6b7280;")
+              | These metrics will help us create your personalized fitness and nutrition plan.
+
+          // Navigation Buttons
+          .form-buttons
+            button#prevBtn.btn.btn-secondary(type="button" onclick="changeStep(-1)" style="display: none;") Previous
+            button#nextBtn.btn.btn-primary(type="button" onclick="changeStep(1)") Next
+            button#submitBtn.btn.btn-primary(type="submit" style="display: none;") Start My Journey
+
+block scripts
+  script(src="js/onboarding.js")

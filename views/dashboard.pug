@@ -1,0 +1,161 @@
+extends layouts/layout
+include mixins
+
+block content
+  +navigation('dashboard')
+
+
+
+  main.dashboard-main
+    .dashboard-container
+      // Hero Section
+      div(style="margin-top: 0.5rem;")
+      .hero-content(style="padding: 0; background: none; box-shadow: none; border: none;")
+        h1
+          | Welcome back, 
+          span#userNameDisplay User
+          | ! 👋
+        p#currentDate.date-display
+        #quoteText.quote-text Loading your daily motivation...
+
+      // Health Metrics Dashboard
+      .metrics-dashboard
+        +metricCard('fas fa-weight', 'BMI', 'bmiDisplay')
+        +metricCard('fas fa-fire', 'Daily Calories', 'caloriesDisplay')
+        +metricCard('fas fa-dumbbell', 'Workout Level', 'workoutLevelDisplay')
+
+      // Main Content Sections
+      .content-sections
+        // Workouts Section
+        section.content-section
+          .section-header
+            .section-info
+              h2
+                i.fas.fa-dumbbell
+                |  Today's Workouts
+              p.section-subtitle Personalized exercises for your fitness level
+            button.refresh-btn(onclick="refreshWorkouts()" title="Refresh Workouts")
+              span(style="font-size:1.2em; font-weight:600; letter-spacing:0.5px; display:flex; align-items:center; gap:0.3em;")
+                i.fas.fa-ellipsis-v
+                |  More Options
+          #workoutsList.workouts-list
+            .loading-text
+              i.fas.fa-spinner.fa-spin
+              |  Loading workouts...
+
+        // Meals Section
+        section.content-section
+          .section-header
+            .section-info
+              h2
+                i.fas.fa-utensils
+                |  Today's Meals
+              p.section-subtitle Delicious recipes tailored to your preferences
+            button.refresh-btn(onclick="refreshMeals()" title="Refresh Meals")
+              span(style="font-size:1.2em; font-weight:600; letter-spacing:0.5px; display:flex; align-items:center; gap:0.3em;")
+                i.fas.fa-ellipsis-v
+                |  More Options
+          #mealsList.meals-list
+            .loading-text
+              i.fas.fa-spinner.fa-spin
+              |  Loading meals...
+
+        // Yoga & Meditation Section
+        section.content-section
+          .section-header
+            .section-info
+              h2
+                i.fas.fa-pray
+                |  Yoga & Meditation
+              p.section-subtitle Videos for mental wellness and flexibility
+            button.refresh-btn(onclick="refreshYoga()" title="Refresh Videos")
+              span(style="font-size:1.2em; font-weight:600; letter-spacing:0.5px; display:flex; align-items:center; gap:0.3em;")
+                i.fas.fa-ellipsis-v
+                |  More Options
+          #yogaList.yoga-list
+            .loading-text
+              i.fas.fa-spinner.fa-spin
+              |  Loading videos...
+
+  // Modals
+  #workoutModal.modal
+    .modal-content
+      span.close ×
+      #workoutDetails.exercise-details
+
+  #mealModal.modal
+    .modal-content
+      span.close ×
+      #mealDetails.recipe-details
+
+  #yogaModal.modal
+    .modal-content
+      span.close ×
+      .video-container
+        #yogaVideo
+
+  #lightboxModal.modal.lightbox-modal
+    .lightbox-content
+      span.lightbox-close ×
+      img#lightboxImage
+      .lightbox-caption
+      .lightbox-navigation
+        button#lightboxPrev.lightbox-nav-btn
+          i.fas.fa-chevron-left
+        button#lightboxNext.lightbox-nav-btn
+          i.fas.fa-chevron-right
+
+  footer.app-footer
+    .footer-content
+      .footer-section
+        h3
+          i.fas.fa-heartbeat
+          | FitJourney
+        p Your personal health and wellness companion powered by smart API integrations
+        .social-links
+          a(href="#" aria-label="Facebook")
+            i.fab.fa-facebook-f
+          a(href="#" aria-label="Twitter")
+            i.fab.fa-twitter
+          a(href="#" aria-label="Instagram")
+            i.fab.fa-instagram
+          a(href="#" aria-label="YouTube")
+            i.fab.fa-youtube
+      .footer-section
+        h4 Quick Links
+        ul
+          li
+            a(href="/") Home
+          li
+            a(href="/onboarding") Get Started
+          li
+            a(href="/dashboard") Dashboard
+          li
+            a(href="#") About Us
+      .footer-section
+        h4 Health Tools
+        ul
+          li
+            a(href="#") BMI Calculator
+          li
+            a(href="#") Workout Plans
+          li
+            a(href="#") Meal Planning
+          li
+            a(href="#") Progress Tracking
+      .footer-section
+        h4 API Partners
+        ul
+          li
+            a(href="https://wger.de/en/software/api" target="_blank") WGER Fitness
+          li
+            a(href="https://spoonacular.com/food-api" target="_blank") Spoonacular
+          li
+            a(href="https://developers.google.com/youtube/v3" target="_blank") YouTube Data
+          li
+            a(href="#") Health APIs
+    .footer-bottom
+      p &copy; 2025 FitJourney. All rights reserved. | Made with ❤️ for your fitness goals
+
+block scripts
+  script(src="js/dashboard.js")
