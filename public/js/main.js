@@ -1,7 +1,7 @@
-// I built this main JavaScript file to make the FitJourney landing page interactive and smooth
+// Built this main JavaScript file to make the FitJourney landing page interactive and smooth
 
 document.addEventListener('DOMContentLoaded', function() {
-    // I love smooth scrolling - it makes navigation feel so much better
+    // smooth scrolling - it makes navigation feel so much better
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
     navLinks.forEach(link => {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // I created this cool header scroll effect that hides when scrolling down
+    // cool header scroll effect that hides when scrolling down
     const header = document.querySelector('.header');
     let lastScrollTop = 0;
 
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // I created this typewriter effect for the hero title - it's one of my favorites!
+    //created this typewriter effect for the hero title - it's one of my favorites!
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const text = heroTitle.textContent;
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 500);
     }
 
-    // I added a subtle parallax effect to the hero section for depth
+    // Added a subtle parallax effect to the hero section for depth
     const hero = document.querySelector('.hero');
     if (hero) {
         window.addEventListener('scroll', function() {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     });
 
-    // I handle form validation because I care about user experience
+    // handle form validation because I care about user experience
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // I built this notification system to communicate with users elegantly
+    // built this notification system to communicate with users elegantly
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    // I believe in keyboard accessibility - everyone should be able to navigate easily
+    // keyboard accessibility - everyone should be able to navigate easily
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const modals = document.querySelectorAll('.modal');
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // I added these accessibility improvements because inclusion matters to me
+    // accessibility improvements because inclusion matters to me
     const interactiveElements = document.querySelectorAll('button, a, input, select');
     interactiveElements.forEach(element => {
         element.addEventListener('focus', function() {
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // I optimize image loading for better performance
+    // optimized image loading for better performance
     const images = document.querySelectorAll('img');
     images.forEach(img => {
         img.addEventListener('load', function() {
